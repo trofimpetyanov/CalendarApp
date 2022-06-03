@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD:CalendarApp/Resources/Base.lproj/Main.storyboard
+<<<<<<< HEAD:CalendarApp/Resources/Base.lproj/Main.storyboard
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RdM-jI-pVY">
+=======
+=======
+>>>>>>> parent of 156c7da (Update Main.storyboard):CalendarApp/Base.lproj/Main.storyboard
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+>>>>>>> parent of 156c7da (Update Main.storyboard):CalendarApp/Base.lproj/Main.storyboard
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="CalendarViewController" customModule="CalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1K1-Fg-PGk" customClass="FSCalendar">
+<<<<<<< HEAD:CalendarApp/Resources/Base.lproj/Main.storyboard
+<<<<<<< HEAD:CalendarApp/Resources/Base.lproj/Main.storyboard
+                                <rect key="frame" x="0.0" y="96" width="600" height="300"/>
+=======
+                                <rect key="frame" x="0.0" y="44" width="414" height="300"/>
+>>>>>>> parent of 156c7da (Update Main.storyboard):CalendarApp/Base.lproj/Main.storyboard
+=======
+                                <rect key="frame" x="0.0" y="44" width="414" height="300"/>
+>>>>>>> parent of 156c7da (Update Main.storyboard):CalendarApp/Base.lproj/Main.storyboard
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="Stc-hi-IUF"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
+                                        <color key="value" systemColor="tintColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                                        <color key="value" systemColor="tintColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
+                                        <color key="value" systemColor="tintColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                                        <color key="value" systemColor="systemRedColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="hE9-VH-ynX"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="eCa-X9-5wt"/>
+                                </connections>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bcK-cD-1VO">
+<<<<<<< HEAD:CalendarApp/Resources/Base.lproj/Main.storyboard
+<<<<<<< HEAD:CalendarApp/Resources/Base.lproj/Main.storyboard
+                                <rect key="frame" x="0.0" y="396" width="600" height="204"/>
+=======
+                                <rect key="frame" x="0.0" y="344" width="414" height="518"/>
+>>>>>>> parent of 156c7da (Update Main.storyboard):CalendarApp/Base.lproj/Main.storyboard
+=======
+                                <rect key="frame" x="0.0" y="344" width="414" height="518"/>
+>>>>>>> parent of 156c7da (Update Main.storyboard):CalendarApp/Base.lproj/Main.storyboard
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="hourCell" id="8mb-01-5O0" customClass="HourTableViewCell" customModule="CalendarApp" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="49.5" width="568" height="43"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8mb-01-5O0" id="4qB-0m-ngC">
+                                            <rect key="frame" x="0.0" y="0.0" width="568" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="E4C-ro-b8e">
+                                                    <rect key="frame" x="16" y="8" width="536" height="27"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="14:00 15:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiJ-PJ-tHe">
+                                                            <rect key="frame" x="0.0" y="0.5" width="40" height="26.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="40" id="c6a-XB-edc"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6t9-L1-IOU">
+                                                            <rect key="frame" x="48" y="5" width="488" height="17"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="E4C-ro-b8e" firstAttribute="top" secondItem="4qB-0m-ngC" secondAttribute="top" constant="8" id="JHQ-4Z-nhA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="E4C-ro-b8e" secondAttribute="trailing" id="fZD-a4-HuF"/>
+                                                <constraint firstAttribute="bottom" secondItem="E4C-ro-b8e" secondAttribute="bottom" constant="8" id="iYM-56-5va"/>
+                                                <constraint firstItem="E4C-ro-b8e" firstAttribute="leading" secondItem="4qB-0m-ngC" secondAttribute="leadingMargin" id="tcU-gu-4Ht"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="timeLabel" destination="yiJ-PJ-tHe" id="ujD-OF-VzN"/>
+                                            <outlet property="titleLabel" destination="6t9-L1-IOU" id="93T-P8-8Oa"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="HrZ-wv-ceq"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="BFA-NF-y7O"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bcK-cD-1VO" secondAttribute="bottom" id="8SL-k9-ggS"/>
+                            <constraint firstItem="bcK-cD-1VO" firstAttribute="top" secondItem="1K1-Fg-PGk" secondAttribute="bottom" id="CWM-tb-9GL"/>
+                            <constraint firstItem="1K1-Fg-PGk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="b8t-cK-hwJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bcK-cD-1VO" secondAttribute="trailing" id="dyU-2I-xhn"/>
+                            <constraint firstItem="1K1-Fg-PGk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="eg4-l8-WAR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1K1-Fg-PGk" secondAttribute="trailing" id="kU3-No-6u4"/>
+                            <constraint firstItem="bcK-cD-1VO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="z5d-bC-2C9"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20" y="98"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
