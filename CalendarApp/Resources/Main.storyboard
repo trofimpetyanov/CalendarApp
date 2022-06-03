@@ -58,7 +58,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wbJ-7y-aZu">
                                                     <rect key="frame" x="20" y="11" width="334" height="17.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hy8-13-qUJ">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hy8-13-qUJ">
                                                             <rect key="frame" x="0.0" y="2" width="26" height="13.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -80,6 +80,10 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="wbJ-7y-aZu" secondAttribute="trailing" id="YlL-uk-lnf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="timeLabel" destination="hy8-13-qUJ" id="BtW-MG-VmK"/>
+                                            <outlet property="titleLabel" destination="JY7-BK-ggR" id="B4p-D9-17m"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -103,6 +107,10 @@
                     <navigationItem key="navigationItem" title="Календарь" id="enB-em-o7E">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Lw7-mY-No0"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="calendar" destination="hex-a1-c2L" id="dLe-oc-7xU"/>
+                        <outlet property="tableView" destination="Bb7-y8-zSk" id="ukw-Mb-02Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
