@@ -16,3 +16,5 @@ struct ToDo {
     var name: String
     var description: String
 }
+
+extension ToDo: Codable { }
