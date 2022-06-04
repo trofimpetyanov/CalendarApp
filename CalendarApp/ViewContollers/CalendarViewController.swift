@@ -44,12 +44,15 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
             return Calendar.current.isDate(toDoDate, inSameDayAs: calendarDate)
         }
         
+        cell.titleLabel.text = nil
+        
         for dayToDo in dayToDos {
-            if let hour = Int(dayToDo.dateStart.timestampToHour().components(separatedBy: ":")[0]), hour == indexPath.row {
-                cell.titleLabel.text = dayToDo.name
-                print("я поставил для \(dayToDo.dateStart.timestampToHour()) -- \(indexPath.row)")
-            } else {
-                
+            if "\(indexPath.row):00" == dayToDo.dateStart.timestampToHour() {
+                if let title = cell.titleLabel.text {
+                    cell.titleLabel.text = "\(title)\n\(dayToDo.name)"
+                } else {
+                    cell.titleLabel.text = dayToDo.name
+                }
             }
         }
         
@@ -61,6 +64,8 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        tableView.reloadData()
+        tableView.reloadSections(IndexSet(integer: .zero), with: .automatic)
+        
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
 }

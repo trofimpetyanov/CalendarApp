@@ -20,11 +20,12 @@ struct Settings {
     var toDos: [ToDo] {
         get {
             return unarchiveJSON(key: Setting.toDos) ?? [
-                ToDo(id: 1, dateStart: 1654268400, dateFinish: 1654272000, name: "ToDo1", description: "Description"),
-                ToDo(id: 2, dateStart: 1654336800, dateFinish: 1654340400, name: "ToDo1", description: "Description"),
-                ToDo(id: 3, dateStart: 1654347600, dateFinish: 1654351200, name: "ToDo1", description: "Description"),
-                ToDo(id: 4, dateStart: 1654437600, dateFinish: 1654441200, name: "ToDo1", description: "Description"),
-                ToDo(id: 5, dateStart: 1654441200, dateFinish: 1654444800, name: "ToDo1", description: "Description")
+                ToDo(id: 0, dateStart: 1654268400, dateFinish: 1654272000, name: "Вымыть посуду", description: "Description"),
+                ToDo(id: 1, dateStart: 1654268400, dateFinish: 1654272000, name: "Подмести полы", description: "Description"),
+                ToDo(id: 2, dateStart: 1654336800, dateFinish: 1654340400, name: "Встреча с SimbirSoft", description: "Description"),
+                ToDo(id: 3, dateStart: 1654347600, dateFinish: 1654351200, name: "Уборка в офисе", description: "Description"),
+                ToDo(id: 4, dateStart: 1654437600, dateFinish: 1654441200, name: "Перестановка мебели", description: "Description"),
+                ToDo(id: 5, dateStart: 1654441200, dateFinish: 1654444800, name: "Доставка стульев", description: "Description")
             ]
         } set {
             archiveJSON(value: newValue, key: Setting.toDos)
