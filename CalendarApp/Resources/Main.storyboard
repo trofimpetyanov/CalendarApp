@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hex-a1-c2L" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="140" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="141" width="414" height="300"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="0BK-l6-j35"/>
@@ -45,27 +45,30 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="pfF-Oq-z9I"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Bb7-y8-zSk">
-                                <rect key="frame" x="0.0" y="440" width="414" height="422"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Bb7-y8-zSk">
+                                <rect key="frame" x="0.0" y="450" width="414" height="412"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="hourCell" id="vS6-dR-rga" customClass="HourTableViewCell" customModule="CalendarApp" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="49.5" width="374" height="39.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="39.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vS6-dR-rga" id="UOf-K6-DZ4">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="39.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="39.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wbJ-7y-aZu">
-                                                    <rect key="frame" x="20" y="11" width="334" height="17.5"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="17.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hy8-13-qUJ">
-                                                            <rect key="frame" x="0.0" y="2" width="26" height="13.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hy8-13-qUJ">
+                                                            <rect key="frame" x="0.0" y="2" width="40" height="13.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="40" id="9P0-Pj-swP"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JY7-BK-ggR">
-                                                            <rect key="frame" x="34" y="0.5" width="300" height="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JY7-BK-ggR">
+                                                            <rect key="frame" x="48" y="0.5" width="326" height="17"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -80,6 +83,10 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="wbJ-7y-aZu" secondAttribute="trailing" id="YlL-uk-lnf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="timeLabel" destination="hy8-13-qUJ" id="BtW-MG-VmK"/>
+                                            <outlet property="titleLabel" destination="JY7-BK-ggR" id="B4p-D9-17m"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -87,22 +94,46 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="aqZ-gT-0gD"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpf-OE-bDE">
+                                <rect key="frame" x="0.0" y="140" width="414" height="1"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="cjk-Kn-gf9"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ky-2p-PDE">
+                                <rect key="frame" x="0.0" y="445" width="414" height="1"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="0aX-is-ktm"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Bb7-y8-zSk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6OX-5h-Vsl"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Bb7-y8-zSk" secondAttribute="bottom" id="BlP-mb-3cr"/>
-                            <constraint firstItem="Bb7-y8-zSk" firstAttribute="top" secondItem="hex-a1-c2L" secondAttribute="bottom" id="DRT-8z-f7l"/>
                             <constraint firstItem="hex-a1-c2L" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="G8Q-rv-V4e"/>
+                            <constraint firstItem="hex-a1-c2L" firstAttribute="top" secondItem="xpf-OE-bDE" secondAttribute="bottom" id="Lvk-OZ-fQ1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Bb7-y8-zSk" secondAttribute="trailing" id="Phn-Ss-lau"/>
+                            <constraint firstItem="xpf-OE-bDE" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="UWN-2x-mYs"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hex-a1-c2L" secondAttribute="trailing" id="WKd-1N-k8R"/>
-                            <constraint firstItem="hex-a1-c2L" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="iNu-RY-Shg"/>
+                            <constraint firstAttribute="trailing" secondItem="1ky-2p-PDE" secondAttribute="trailing" id="ZSz-ps-Chk"/>
+                            <constraint firstItem="1ky-2p-PDE" firstAttribute="top" secondItem="hex-a1-c2L" secondAttribute="bottom" constant="4" id="bdY-dS-VH8"/>
+                            <constraint firstAttribute="trailing" secondItem="xpf-OE-bDE" secondAttribute="trailing" id="buq-sJ-4fo"/>
+                            <constraint firstItem="1ky-2p-PDE" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="cqi-sp-bTO"/>
+                            <constraint firstItem="xpf-OE-bDE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="dKf-IS-CDb"/>
+                            <constraint firstItem="Bb7-y8-zSk" firstAttribute="top" secondItem="1ky-2p-PDE" secondAttribute="bottom" constant="4" id="e6t-mE-9Am"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Календарь" id="enB-em-o7E">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Lw7-mY-No0"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="calendar" destination="hex-a1-c2L" id="dLe-oc-7xU"/>
+                        <outlet property="tableView" destination="Bb7-y8-zSk" id="ukw-Mb-02Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -134,8 +165,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
