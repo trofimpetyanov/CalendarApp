@@ -20,12 +20,21 @@ class CalendarViewController: UIViewController {
     
     var model = Model()
     
+    var selectedToDo: ToDo?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         calendar.select(Date())
     }
-
+    @IBSegueAction func addEditToDoTableViewContollerSegue(_ coder: NSCoder, sender: Any?) -> AddEditToDoTableViewController? {
+        guard let selectedIndexPath = tableView.indexPathForSelectedRow, let selectedCell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell, let selectedToDo = selectedCell.toDo else {
+            return AddEditToDoTableViewController(coder: coder, toDo: nil)
+        }
+        
+        return AddEditToDoTableViewController(coder: coder, toDo: selectedToDo)
+    }
+    
     @IBAction func unwindToCalendarViewController(unwindSegue: UIStoryboardSegue) {
         
     }
@@ -51,6 +60,8 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         
         for dayToDo in dayToDos {
             if "\(indexPath.row):00" == dayToDo.dateStart.timestampToHour() {
+                cell.toDo = dayToDo
+                
                 if let title = cell.titleLabel.text {
                     cell.titleLabel.text = "\(title)\n\(dayToDo.name)"
                 } else {

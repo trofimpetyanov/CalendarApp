@@ -174,7 +174,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="HOm-3C-2s8" kind="relationship" relationship="rootViewController" id="5Ud-xs-yal"/>
+                        <segue destination="HOm-3C-2s8" kind="relationship" relationship="rootViewController" destinationCreationSelector="addEditToDoTableViewContollerSegue:sender:" id="5Ud-xs-yal"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RWU-87-DfS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -322,15 +322,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Edit To Do" id="2og-hV-Nmr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="VhA-Up-9TH">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="VhA-Up-9TH">
                             <connections>
                                 <segue destination="egX-Nq-sOF" kind="unwind" unwindAction="unwindToCalendarViewControllerWithUnwindSegue:" id="pPS-Sx-ZXI"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="AfT-46-KQ8">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="HOm-3C-2s8" id="xpn-EI-B8A"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionTextField" destination="Uju-ce-CCZ" id="JU9-So-lGq"/>
+                        <outlet property="finishDatePicker" destination="6G0-9m-0e4" id="lMk-jf-Pfo"/>
                         <outlet property="nameTextField" destination="xoj-Di-0Qv" id="TXa-jE-tKp"/>
+                        <outlet property="startDatePicker" destination="zPv-iu-kSg" id="t5P-km-XxA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIg-TO-B3o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
