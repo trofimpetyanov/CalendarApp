@@ -327,6 +327,38 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="Ul4-zs-Ufb">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="BkN-2r-vaX">
+                                        <rect key="frame" x="20" y="360.5" width="374" height="44.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BkN-2r-vaX" id="Tdt-SD-Bc5">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="44.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfN-uR-JHW">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="44.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="9Th-5w-R6L"/>
+                                                    </constraints>
+                                                    <color key="tintColor" systemColor="systemRedColor"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Удалить задачу"/>
+                                                    <connections>
+                                                        <segue destination="egX-Nq-sOF" kind="unwind" identifier="deleteUnwind" unwindAction="unwindToCalendarViewControllerWithSegue:" id="sj8-rb-F04"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bfN-uR-JHW" firstAttribute="top" secondItem="Tdt-SD-Bc5" secondAttribute="top" id="7ea-7u-quX"/>
+                                                <constraint firstItem="bfN-uR-JHW" firstAttribute="leading" secondItem="Tdt-SD-Bc5" secondAttribute="leading" id="9st-6L-QuS"/>
+                                                <constraint firstAttribute="bottom" secondItem="bfN-uR-JHW" secondAttribute="bottom" id="QCO-9v-yXD"/>
+                                                <constraint firstAttribute="trailing" secondItem="bfN-uR-JHW" secondAttribute="trailing" id="YQo-XJ-L6Y"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="HOm-3C-2s8" id="ryi-eC-Hle"/>
@@ -336,7 +368,7 @@
                     <navigationItem key="navigationItem" title="Add Edit To Do" id="2og-hV-Nmr">
                         <barButtonItem key="leftBarButtonItem" title="Отменить" id="VhA-Up-9TH">
                             <connections>
-                                <segue destination="egX-Nq-sOF" kind="unwind" unwindAction="unwindToCalendarViewControllerWithSegue:" id="nZG-Yq-ssC"/>
+                                <segue destination="egX-Nq-sOF" kind="unwind" unwindAction="unwindToCalendarViewControllerWithSegue:" id="tKS-iI-hZG"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Сохранить" id="AfT-46-KQ8">

@@ -56,9 +56,8 @@ class AddEditToDoTableViewController: UITableViewController {
     
     func updateSaveButtonState() {
         let name = nameTextField.text ?? ""
-        let description = descriptionTextField.text ?? ""
         
-        saveButton.isEnabled = !name.isEmpty && !description.isEmpty
+        saveButton.isEnabled = !name.isEmpty
     }
     
     override func viewDidLoad() {

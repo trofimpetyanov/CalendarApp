@@ -36,18 +36,28 @@ class CalendarViewController: UIViewController {
     }
     
     @IBAction func unwindToCalendarViewController(segue: UIStoryboardSegue) {
-        guard segue.identifier == "saveUnwind",
-              let sourceViewController = segue.source as? AddEditToDoTableViewController,
-              let toDo = sourceViewController.toDo
-        else { return }
-        
-        if let selectedIndexPath = tableView.indexPathForSelectedRow,
-           let cell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell,
-           let selectedToDo = cell.toDo {
-            Settings.shared.toDos.removeAll { $0.id == selectedToDo.id }
-            Settings.shared.toDos.append(toDo)
-        } else {
-            Settings.shared.toDos.append(toDo)
+        if segue.identifier == "saveUnwind",
+           let sourceViewController = segue.source as? AddEditToDoTableViewController,
+           let toDo = sourceViewController.toDo {
+            
+            if let selectedIndexPath = tableView.indexPathForSelectedRow,
+               let cell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell,
+               let selectedToDo = cell.toDo {
+                tableView.deselectRow(at: selectedIndexPath, animated: true)
+                
+                Settings.shared.toDos.removeAll { $0.id == selectedToDo.id }
+                Settings.shared.toDos.append(toDo)
+            } else {
+                Settings.shared.toDos.append(toDo)
+            }
+        } else if segue.identifier == "deleteUnwind" {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow,
+               let cell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell,
+               let selectedToDo = cell.toDo {
+                tableView.deselectRow(at: selectedIndexPath, animated: true)
+                
+                Settings.shared.toDos.removeAll { $0.id == selectedToDo.id }
+            }
         }
         
         tableView.reloadData()
