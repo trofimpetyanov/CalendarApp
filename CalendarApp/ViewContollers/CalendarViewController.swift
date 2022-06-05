@@ -20,12 +20,48 @@ class CalendarViewController: UIViewController {
     
     var model = Model()
     
+    var selectedToDo: ToDo?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         calendar.select(Date())
     }
-
+    @IBSegueAction func addEditToDoTableViewContollerSegue(_ coder: NSCoder, sender: Any?) -> AddEditToDoTableViewController? {
+        guard let selectedIndexPath = tableView.indexPathForSelectedRow, let selectedCell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell, let selectedToDo = selectedCell.toDo else {
+            return AddEditToDoTableViewController(coder: coder, toDo: nil)
+        }
+        
+        return AddEditToDoTableViewController(coder: coder, toDo: selectedToDo)
+    }
+    
+    @IBAction func unwindToCalendarViewController(segue: UIStoryboardSegue) {
+        if segue.identifier == "saveUnwind",
+           let sourceViewController = segue.source as? AddEditToDoTableViewController,
+           let toDo = sourceViewController.toDo {
+            
+            if let selectedIndexPath = tableView.indexPathForSelectedRow,
+               let cell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell,
+               let selectedToDo = cell.toDo {
+                tableView.deselectRow(at: selectedIndexPath, animated: true)
+                
+                Settings.shared.toDos.removeAll { $0.id == selectedToDo.id }
+                Settings.shared.toDos.append(toDo)
+            } else {
+                Settings.shared.toDos.append(toDo)
+            }
+        } else if segue.identifier == "deleteUnwind" {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow,
+               let cell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell,
+               let selectedToDo = cell.toDo {
+                tableView.deselectRow(at: selectedIndexPath, animated: true)
+                
+                Settings.shared.toDos.removeAll { $0.id == selectedToDo.id }
+            }
+        }
+        
+        tableView.reloadData()
+    }
 }
 
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
@@ -37,17 +73,19 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "hourCell", for: indexPath) as! HourTableViewCell
         
         let dayToDos = model.toDos.filter { toDo in
-            let toDoDate = Date(timeIntervalSince1970: toDo.dateStart)
-
+            let toDoDate = Date(timeIntervalSince1970: toDo.startDate)
+            
             guard let calendarDate = calendar.selectedDate else { return false }
-        
+            
             return Calendar.current.isDate(toDoDate, inSameDayAs: calendarDate)
         }
         
         cell.titleLabel.text = nil
         
         for dayToDo in dayToDos {
-            if "\(indexPath.row):00" == dayToDo.dateStart.timestampToHour() {
+            if "\(indexPath.row):00" == dayToDo.startDate.timestampToHour() {
+                cell.toDo = dayToDo
+                
                 if let title = cell.titleLabel.text {
                     cell.titleLabel.text = "\(title)\n\(dayToDo.name)"
                 } else {

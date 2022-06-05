@@ -8,10 +8,10 @@
 import Foundation
 
 struct ToDo {
-    let id: Int
+    let id: UUID
     
-    var dateStart: Double
-    var dateFinish: Double
+    var startDate: Double
+    var finishDate: Double
      
     var name: String
     var description: String

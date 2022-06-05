@@ -86,6 +86,7 @@
                                         <connections>
                                             <outlet property="timeLabel" destination="hy8-13-qUJ" id="BtW-MG-VmK"/>
                                             <outlet property="titleLabel" destination="JY7-BK-ggR" id="B4p-D9-17m"/>
+                                            <segue destination="AKB-dX-RVI" kind="show" id="YF8-Nu-PzN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -128,7 +129,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Календарь" id="enB-em-o7E">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Lw7-mY-No0"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Lw7-mY-No0">
+                            <connections>
+                                <segue destination="AKB-dX-RVI" kind="show" id="nyQ-6O-tWb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="calendar" destination="hex-a1-c2L" id="dLe-oc-7xU"/>
@@ -137,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="979.71014492753636" y="137.94642857142856"/>
+            <point key="canvasLocation" x="843" y="138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="v0Z-bt-L3G">
@@ -157,7 +162,238 @@
             </objects>
             <point key="canvasLocation" x="69.565217391304358" y="137.94642857142856"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WTi-Xo-dBn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AKB-dX-RVI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="rLQ-HF-glW"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ehu-ps-m1w">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HOm-3C-2s8" kind="relationship" relationship="rootViewController" destinationCreationSelector="addEditToDoTableViewContollerSegue:sender:" id="5Ud-xs-yal"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RWU-87-DfS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1602.8985507246377" y="137.94642857142856"/>
+        </scene>
+        <!--Add Edit To Do-->
+        <scene sceneID="T3K-c5-ZuN">
+            <objects>
+                <tableViewController id="HOm-3C-2s8" customClass="AddEditToDoTableViewController" customModule="CalendarApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="NOA-eY-cEn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <sections>
+                            <tableViewSection headerTitle="Название" id="SIg-WS-nUK">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="43" id="z9b-Jg-otO">
+                                        <rect key="frame" x="20" y="49.5" width="374" height="43"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z9b-Jg-otO" id="Fk3-Kj-ix0">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Убраться в комнате" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoj-Di-0Qv">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textfieldsEditingChanged:" destination="HOm-3C-2s8" eventType="editingChanged" id="ZBP-rT-2OG"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="xoj-Di-0Qv" secondAttribute="bottom" id="0gj-dH-b3p"/>
+                                                <constraint firstAttribute="trailing" secondItem="xoj-Di-0Qv" secondAttribute="trailing" constant="20" id="leS-Mx-e6w"/>
+                                                <constraint firstItem="xoj-Di-0Qv" firstAttribute="top" secondItem="Fk3-Kj-ix0" secondAttribute="top" id="yFJ-5Z-5yv"/>
+                                                <constraint firstItem="xoj-Di-0Qv" firstAttribute="leading" secondItem="Fk3-Kj-ix0" secondAttribute="leading" constant="20" id="zTF-B1-uFV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Описание" id="u0n-4F-fWv">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="43" id="pE0-FK-wrs">
+                                        <rect key="frame" x="20" y="142.5" width="374" height="43"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pE0-FK-wrs" id="sRp-3R-AU1">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Не забыть помыть полы" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uju-ce-CCZ">
+                                                    <rect key="frame" x="20" y="0.0" width="334" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textfieldsEditingChanged:" destination="HOm-3C-2s8" eventType="editingChanged" id="nsc-xA-LT5"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Uju-ce-CCZ" firstAttribute="top" secondItem="sRp-3R-AU1" secondAttribute="top" id="4eg-8j-Jbi"/>
+                                                <constraint firstAttribute="bottom" secondItem="Uju-ce-CCZ" secondAttribute="bottom" id="LH9-pc-UbK"/>
+                                                <constraint firstItem="Uju-ce-CCZ" firstAttribute="leading" secondItem="sRp-3R-AU1" secondAttribute="leading" constant="20" id="UhT-Cr-duv"/>
+                                                <constraint firstAttribute="trailing" secondItem="Uju-ce-CCZ" secondAttribute="trailing" constant="20" id="zxh-0j-asf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Время" id="SmV-kv-54a">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="P4d-Qu-dx1">
+                                        <rect key="frame" x="20" y="235.5" width="374" height="44.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P4d-Qu-dx1" id="FVf-9v-WQK">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="44.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iGa-UI-e4Z">
+                                                    <rect key="frame" x="20" y="0.0" width="346" height="44.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата Начала" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccu-hL-dIC">
+                                                            <rect key="frame" x="0.0" y="12" width="112.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="zPv-iu-kSg">
+                                                            <rect key="frame" x="120.5" y="0.5" width="225.5" height="44"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="44" id="Zfd-VK-eyz"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <action selector="datePickersValueChanged:" destination="HOm-3C-2s8" eventType="valueChanged" id="fBD-Zo-8eN"/>
+                                                            </connections>
+                                                        </datePicker>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="zPv-iu-kSg" firstAttribute="width" secondItem="ccu-hL-dIC" secondAttribute="width" multiplier="2" id="trz-kZ-g2L"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="iGa-UI-e4Z" firstAttribute="leading" secondItem="FVf-9v-WQK" secondAttribute="leading" constant="20" id="7kV-KM-pdt"/>
+                                                <constraint firstAttribute="bottom" secondItem="iGa-UI-e4Z" secondAttribute="bottom" id="Am9-B1-wxK"/>
+                                                <constraint firstAttribute="trailing" secondItem="iGa-UI-e4Z" secondAttribute="trailing" constant="8" id="dwd-bG-YuO"/>
+                                                <constraint firstItem="iGa-UI-e4Z" firstAttribute="top" secondItem="FVf-9v-WQK" secondAttribute="top" id="pAO-lL-e5G"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="YMw-Ol-i29">
+                                        <rect key="frame" x="20" y="280" width="374" height="44.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YMw-Ol-i29" id="uZy-sQ-VBH">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="44.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wq0-A0-TFB">
+                                                    <rect key="frame" x="20" y="0.0" width="346" height="44.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата Конца" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dik-33-Jc9">
+                                                            <rect key="frame" x="0.0" y="12" width="112.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="6G0-9m-0e4">
+                                                            <rect key="frame" x="120.5" y="0.5" width="225.5" height="44"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="44" id="pJ7-PF-KEz"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <action selector="datePickersValueChanged:" destination="HOm-3C-2s8" eventType="valueChanged" id="Nf8-gk-1mU"/>
+                                                            </connections>
+                                                        </datePicker>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="6G0-9m-0e4" firstAttribute="width" secondItem="dik-33-Jc9" secondAttribute="width" multiplier="2" id="GDM-ib-PJ1"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="wq0-A0-TFB" secondAttribute="bottom" id="0oF-k4-CDg"/>
+                                                <constraint firstItem="wq0-A0-TFB" firstAttribute="leading" secondItem="uZy-sQ-VBH" secondAttribute="leading" constant="20" id="Dim-7k-3iD"/>
+                                                <constraint firstItem="wq0-A0-TFB" firstAttribute="top" secondItem="uZy-sQ-VBH" secondAttribute="top" id="NOU-0A-64d"/>
+                                                <constraint firstAttribute="trailing" secondItem="wq0-A0-TFB" secondAttribute="trailing" constant="8" id="dvk-3k-dtt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="Ul4-zs-Ufb">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="BkN-2r-vaX">
+                                        <rect key="frame" x="20" y="360.5" width="374" height="44.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BkN-2r-vaX" id="Tdt-SD-Bc5">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="44.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfN-uR-JHW">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="44.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="9Th-5w-R6L"/>
+                                                    </constraints>
+                                                    <color key="tintColor" systemColor="systemRedColor"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Удалить задачу"/>
+                                                    <connections>
+                                                        <segue destination="egX-Nq-sOF" kind="unwind" identifier="deleteUnwind" unwindAction="unwindToCalendarViewControllerWithSegue:" id="sj8-rb-F04"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bfN-uR-JHW" firstAttribute="top" secondItem="Tdt-SD-Bc5" secondAttribute="top" id="7ea-7u-quX"/>
+                                                <constraint firstItem="bfN-uR-JHW" firstAttribute="leading" secondItem="Tdt-SD-Bc5" secondAttribute="leading" id="9st-6L-QuS"/>
+                                                <constraint firstAttribute="bottom" secondItem="bfN-uR-JHW" secondAttribute="bottom" id="QCO-9v-yXD"/>
+                                                <constraint firstAttribute="trailing" secondItem="bfN-uR-JHW" secondAttribute="trailing" id="YQo-XJ-L6Y"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="HOm-3C-2s8" id="ryi-eC-Hle"/>
+                            <outlet property="delegate" destination="HOm-3C-2s8" id="Hrq-9G-btc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add Edit To Do" id="2og-hV-Nmr">
+                        <barButtonItem key="leftBarButtonItem" title="Отменить" id="VhA-Up-9TH">
+                            <connections>
+                                <segue destination="egX-Nq-sOF" kind="unwind" unwindAction="unwindToCalendarViewControllerWithSegue:" id="tKS-iI-hZG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="AfT-46-KQ8">
+                            <connections>
+                                <segue destination="egX-Nq-sOF" kind="unwind" identifier="saveUnwind" unwindAction="unwindToCalendarViewControllerWithSegue:" id="bFL-NP-PF2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="Uju-ce-CCZ" id="JU9-So-lGq"/>
+                        <outlet property="finishDatePicker" destination="6G0-9m-0e4" id="lMk-jf-Pfo"/>
+                        <outlet property="nameTextField" destination="xoj-Di-0Qv" id="TXa-jE-tKp"/>
+                        <outlet property="saveButton" destination="AfT-46-KQ8" id="LMM-1t-ndH"/>
+                        <outlet property="startDatePicker" destination="zPv-iu-kSg" id="t5P-km-XxA"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gIg-TO-B3o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="egX-Nq-sOF" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2347.826086956522" y="137.94642857142856"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="nyQ-6O-tWb"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
