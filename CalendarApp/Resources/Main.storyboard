@@ -202,6 +202,9 @@
                                                     <rect key="frame" x="20" y="0.0" width="334" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textfieldsEditingChanged:" destination="HOm-3C-2s8" eventType="editingChanged" id="ZBP-rT-2OG"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -227,6 +230,9 @@
                                                     <rect key="frame" x="20" y="0.0" width="334" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textfieldsEditingChanged:" destination="HOm-3C-2s8" eventType="editingChanged" id="nsc-xA-LT5"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -330,12 +336,12 @@
                     <navigationItem key="navigationItem" title="Add Edit To Do" id="2og-hV-Nmr">
                         <barButtonItem key="leftBarButtonItem" title="Отменить" id="VhA-Up-9TH">
                             <connections>
-                                <segue destination="egX-Nq-sOF" kind="unwind" unwindAction="unwindToCalendarViewControllerWithUnwindSegue:" id="OBu-OV-LXv"/>
+                                <segue destination="egX-Nq-sOF" kind="unwind" unwindAction="unwindToCalendarViewControllerWithSegue:" id="nZG-Yq-ssC"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Сохранить" id="AfT-46-KQ8">
                             <connections>
-                                <segue destination="egX-Nq-sOF" kind="unwind" identifier="saveUnwind" unwindAction="unwindToCalendarViewControllerWithUnwindSegue:" id="aBa-cx-bRS"/>
+                                <segue destination="egX-Nq-sOF" kind="unwind" identifier="saveUnwind" unwindAction="unwindToCalendarViewControllerWithSegue:" id="bFL-NP-PF2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -343,6 +349,7 @@
                         <outlet property="descriptionTextField" destination="Uju-ce-CCZ" id="JU9-So-lGq"/>
                         <outlet property="finishDatePicker" destination="6G0-9m-0e4" id="lMk-jf-Pfo"/>
                         <outlet property="nameTextField" destination="xoj-Di-0Qv" id="TXa-jE-tKp"/>
+                        <outlet property="saveButton" destination="AfT-46-KQ8" id="LMM-1t-ndH"/>
                         <outlet property="startDatePicker" destination="zPv-iu-kSg" id="t5P-km-XxA"/>
                     </connections>
                 </tableViewController>

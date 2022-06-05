@@ -35,10 +35,22 @@ class CalendarViewController: UIViewController {
         return AddEditToDoTableViewController(coder: coder, toDo: selectedToDo)
     }
     
-    @IBAction func unwindToCalendarViewController(unwindSegue: UIStoryboardSegue) {
-        if let selectedIndexPath = tableView.indexPathForSelectedRow {
-            tableView.deselectRow(at: selectedIndexPath, animated: true)
+    @IBAction func unwindToCalendarViewController(segue: UIStoryboardSegue) {
+        guard segue.identifier == "saveUnwind",
+              let sourceViewController = segue.source as? AddEditToDoTableViewController,
+              let toDo = sourceViewController.toDo
+        else { return }
+        
+        if let selectedIndexPath = tableView.indexPathForSelectedRow,
+           let cell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell,
+           let selectedToDo = cell.toDo {
+            Settings.shared.toDos.removeAll { $0.id == selectedToDo.id }
+            Settings.shared.toDos.append(toDo)
+        } else {
+            Settings.shared.toDos.append(toDo)
         }
+        
+        tableView.reloadData()
     }
 }
 
@@ -51,17 +63,17 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "hourCell", for: indexPath) as! HourTableViewCell
         
         let dayToDos = model.toDos.filter { toDo in
-            let toDoDate = Date(timeIntervalSince1970: toDo.dateStart)
-
+            let toDoDate = Date(timeIntervalSince1970: toDo.startDate)
+            
             guard let calendarDate = calendar.selectedDate else { return false }
-        
+            
             return Calendar.current.isDate(toDoDate, inSameDayAs: calendarDate)
         }
         
         cell.titleLabel.text = nil
         
         for dayToDo in dayToDos {
-            if "\(indexPath.row):00" == dayToDo.dateStart.timestampToHour() {
+            if "\(indexPath.row):00" == dayToDo.startDate.timestampToHour() {
                 cell.toDo = dayToDo
                 
                 if let title = cell.titleLabel.text {

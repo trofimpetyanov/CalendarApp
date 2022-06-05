@@ -14,6 +14,8 @@ class AddEditToDoTableViewController: UITableViewController {
     @IBOutlet var startDatePicker: UIDatePicker!
     @IBOutlet var finishDatePicker: UIDatePicker!
     
+    @IBOutlet var saveButton: UIBarButtonItem!
+    
     private let placeholders = [
         "Оплатить аренду" : "Перевести 40,000₽ В.А.Комаровой",
         "Сходить в ветклинику" : "У Барсика болит лапа",
@@ -34,10 +36,6 @@ class AddEditToDoTableViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        print("я ушла")
-    }
-    
     func setupDatePickers() {
         let calendar = Calendar.current
         var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
@@ -47,7 +45,6 @@ class AddEditToDoTableViewController: UITableViewController {
         
         if let currentDate = calendar.date(from: components) {
             startDatePicker.date = currentDate
-            print("установил \(currentDate)")
         }
         
         updateDatePickers()
@@ -57,10 +54,16 @@ class AddEditToDoTableViewController: UITableViewController {
         finishDatePicker.minimumDate = Calendar.current.date(byAdding: .minute, value: 30, to: startDatePicker.date)
     }
     
+    func updateSaveButtonState() {
+        let name = nameTextField.text ?? ""
+        let description = descriptionTextField.text ?? ""
+        
+        saveButton.isEnabled = !name.isEmpty && !description.isEmpty
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDatePickers()
-        
         
         if let toDo = toDo {
             title = "Изменить задачу"
@@ -68,17 +71,42 @@ class AddEditToDoTableViewController: UITableViewController {
             nameTextField.text = toDo.name
             descriptionTextField.text = toDo.description
             
-            startDatePicker.date = Date(timeIntervalSince1970: toDo.dateStart)
-            finishDatePicker.date = Date(timeIntervalSince1970: toDo.dateFinish)
+            startDatePicker.date = Date(timeIntervalSince1970: toDo.startDate)
+            finishDatePicker.date = Date(timeIntervalSince1970: toDo.finishDate)
         } else if let randomPlaceholder = placeholders.randomElement() {
             title = "Новая задача"
             
             nameTextField.placeholder = randomPlaceholder.key
             descriptionTextField.placeholder = randomPlaceholder.value
         }
+        
+        updateSaveButtonState()
+    }
+    
+    @IBAction func textfieldsEditingChanged(_ sender: UITextField) {
+        updateSaveButtonState()
     }
     
     @IBAction func datePickersValueChanged(_ sender: UIDatePicker) {
         updateDatePickers()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "saveUnwind" else { return }
+        
+        var id: UUID
+        
+        let name = nameTextField.text ?? ""
+        let description = descriptionTextField.text ?? ""
+        let startDate = Double(startDatePicker.date.timeIntervalSince1970)
+        let finishDate = Double(finishDatePicker.date.timeIntervalSince1970)
+        
+        if let toDo = toDo {
+            id = toDo.id
+        } else {
+            id = UUID()
+        }
+        
+        toDo = ToDo(id: id, startDate: startDate, finishDate: finishDate, name: name, description: description)
     }
 }
