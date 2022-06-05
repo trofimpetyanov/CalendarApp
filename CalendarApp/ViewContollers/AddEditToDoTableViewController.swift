@@ -34,22 +34,51 @@ class AddEditToDoTableViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print("я ушла")
+    }
+    
+    func setupDatePickers() {
+        let calendar = Calendar.current
+        var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
+        
+        components.minute = 0
+        components.second = 0
+        
+        if let currentDate = calendar.date(from: components) {
+            startDatePicker.date = currentDate
+            print("установил \(currentDate)")
+        }
+        
+        updateDatePickers()
+    }
+    
+    func updateDatePickers() {
+        finishDatePicker.minimumDate = Calendar.current.date(byAdding: .minute, value: 30, to: startDatePicker.date)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupDatePickers()
+        
         
         if let toDo = toDo {
+            title = "Изменить задачу"
+            
             nameTextField.text = toDo.name
             descriptionTextField.text = toDo.description
             
             startDatePicker.date = Date(timeIntervalSince1970: toDo.dateStart)
             finishDatePicker.date = Date(timeIntervalSince1970: toDo.dateFinish)
         } else if let randomPlaceholder = placeholders.randomElement() {
+            title = "Новая задача"
+            
             nameTextField.placeholder = randomPlaceholder.key
             descriptionTextField.placeholder = randomPlaceholder.value
         }
     }
     
-    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-        
+    @IBAction func datePickersValueChanged(_ sender: UIDatePicker) {
+        updateDatePickers()
     }
 }

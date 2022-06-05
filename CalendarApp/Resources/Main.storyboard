@@ -185,7 +185,7 @@
         <scene sceneID="T3K-c5-ZuN">
             <objects>
                 <tableViewController id="HOm-3C-2s8" customClass="AddEditToDoTableViewController" customModule="CalendarApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="NOA-eY-cEn">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="NOA-eY-cEn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
@@ -257,11 +257,14 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="zPv-iu-kSg">
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="zPv-iu-kSg">
                                                             <rect key="frame" x="120.5" y="0.5" width="225.5" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="Zfd-VK-eyz"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <action selector="datePickersValueChanged:" destination="HOm-3C-2s8" eventType="valueChanged" id="fBD-Zo-8eN"/>
+                                                            </connections>
                                                         </datePicker>
                                                     </subviews>
                                                     <constraints>
@@ -293,11 +296,14 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="6G0-9m-0e4">
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="6G0-9m-0e4">
                                                             <rect key="frame" x="120.5" y="0.5" width="225.5" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="pJ7-PF-KEz"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <action selector="datePickersValueChanged:" destination="HOm-3C-2s8" eventType="valueChanged" id="Nf8-gk-1mU"/>
+                                                            </connections>
                                                         </datePicker>
                                                     </subviews>
                                                     <constraints>
@@ -322,14 +328,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Edit To Do" id="2og-hV-Nmr">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="VhA-Up-9TH">
+                        <barButtonItem key="leftBarButtonItem" title="Отменить" id="VhA-Up-9TH">
                             <connections>
-                                <segue destination="egX-Nq-sOF" kind="unwind" unwindAction="unwindToCalendarViewControllerWithUnwindSegue:" id="pPS-Sx-ZXI"/>
+                                <segue destination="egX-Nq-sOF" kind="unwind" unwindAction="unwindToCalendarViewControllerWithUnwindSegue:" id="OBu-OV-LXv"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="AfT-46-KQ8">
+                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="AfT-46-KQ8">
                             <connections>
-                                <action selector="saveButtonTapped:" destination="HOm-3C-2s8" id="xpn-EI-B8A"/>
+                                <segue destination="egX-Nq-sOF" kind="unwind" identifier="saveUnwind" unwindAction="unwindToCalendarViewControllerWithUnwindSegue:" id="aBa-cx-bRS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

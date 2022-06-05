@@ -36,7 +36,9 @@ class CalendarViewController: UIViewController {
     }
     
     @IBAction func unwindToCalendarViewController(unwindSegue: UIStoryboardSegue) {
-        
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: true)
+        }
     }
 }
 
