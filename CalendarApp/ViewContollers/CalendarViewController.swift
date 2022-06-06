@@ -23,8 +23,6 @@ class CalendarViewController: UIViewController {
     //MARK: – Properties
     var model = Model()
     
-    var selectedToDo: ToDo?
-    
     //MARK: – Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,14 +33,46 @@ class CalendarViewController: UIViewController {
     
     //MARK: – Actions
     @IBSegueAction func addEditToDoTableViewContollerSegue(_ coder: NSCoder, sender: Any?) -> AddEditToDoTableViewController? {
-        guard let selectedIndexPath = tableView.indexPathForSelectedRow, let selectedCell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell, let selectedToDo = selectedCell.toDo else {
-            return AddEditToDoTableViewController(coder: coder, toDo: nil)
+        
+        if let selectedIndexPath = tableView.indexPathForSelectedRow, let selectedCell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell, let selectedDate = calendar.selectedDate {
+            tableView.deselectRow(at: selectedIndexPath, animated: true)
+            
+            if let selectedToDo = selectedCell.toDo {
+                return AddEditToDoTableViewController(coder: coder, toDo: selectedToDo, segueType: .toDoCellTapped)
+            } else {
+                var components = Calendar.current.dateComponents([.year, .month, .day, .hour], from: selectedDate)
+                
+                components.hour = selectedIndexPath.row
+                
+                return AddEditToDoTableViewController(coder: coder, toDo: nil, segueType: .emptyCellTapped(date: Calendar.current.date(from: components)))
+            }
+        } else {
+            return AddEditToDoTableViewController(coder: coder, toDo: nil, segueType: .newButtonTapped)
         }
         
-        return AddEditToDoTableViewController(coder: coder, toDo: selectedToDo)
+        
+//        guard let selectedIndexPath = tableView.indexPathForSelectedRow, let selectedCell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell, let selectedDate = calendar.selectedDate else {
+//            return AddEditToDoTableViewController(coder: coder, toDo: nil, segueType: .newButtonTapped)
+//        }
+//        
+//        tableView.deselectRow(at: selectedIndexPath, animated: true)
+//        
+//        if let selectedToDo = selectedCell.toDo {
+//            return AddEditToDoTableViewController(coder: coder, toDo: selectedToDo, segueType: .toDoCellTapped)
+//        } else {
+//            var components = Calendar.current.dateComponents([.year, .month, .day, .hour], from: selectedDate)
+//            
+//            components.hour = selectedIndexPath.row
+//            
+//            return AddEditToDoTableViewController(coder: coder, toDo: nil, segueType: .emptyCellTapped(date: Calendar.current.date(from: components)))
+//        }
     }
     
     @IBAction func unwindToCalendarViewController(segue: UIStoryboardSegue) {
+        if let selctedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selctedIndexPath, animated: true)
+        }
+        
         if segue.identifier == "saveUnwind",
            let sourceViewController = segue.source as? AddEditToDoTableViewController,
            let toDo = sourceViewController.toDo {
@@ -84,6 +114,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         
         // Update row's titleLabel with toDos.
         cell.titleLabel.text = nil
+        cell.toDo = nil
         
         for dayToDo in model.toDos {
             

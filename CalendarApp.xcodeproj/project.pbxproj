@@ -17,6 +17,7 @@
 		817BB75B284A1CCE002F2B75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 817BB75A284A1CCE002F2B75 /* Main.storyboard */; };
 		817BB75E284A2303002F2B75 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817BB75D284A2303002F2B75 /* Settings.swift */; };
 		817BB785284A645A002F2B75 /* Double+TimestampToHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817BB784284A645A002F2B75 /* Double+TimestampToHour.swift */; };
+		81BA1355284E5B9A00C424E0 /* SegueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA1354284E5B9A00C424E0 /* SegueType.swift */; };
 		81E4FC46284A029300142F48 /* HourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E4FC45284A029300142F48 /* HourTableViewCell.swift */; };
 		C4CB20F6845E99C4EA773592 /* Pods_CalendarApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0915CB6F8064EA2EC96DC401 /* Pods_CalendarApp.framework */; };
 /* End PBXBuildFile section */
@@ -35,6 +36,7 @@
 		817BB75A284A1CCE002F2B75 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		817BB75D284A2303002F2B75 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		817BB784284A645A002F2B75 /* Double+TimestampToHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+TimestampToHour.swift"; sourceTree = "<group>"; };
+		81BA1354284E5B9A00C424E0 /* SegueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueType.swift; sourceTree = "<group>"; };
 		81E4FC45284A029300142F48 /* HourTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourTableViewCell.swift; sourceTree = "<group>"; };
 		E9D55B2E9A17F6C7EE2CEE8A /* Pods-CalendarApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarApp.debug.xcconfig"; path = "Target Support Files/Pods-CalendarApp/Pods-CalendarApp.debug.xcconfig"; sourceTree = "<group>"; };
 		FC865F20D1D4C910E94AA6AB /* Pods-CalendarApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarApp.release.xcconfig"; path = "Target Support Files/Pods-CalendarApp/Pods-CalendarApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				817BB75D284A2303002F2B75 /* Settings.swift */,
+				81BA1354284E5B9A00C424E0 /* SegueType.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				817BB785284A645A002F2B75 /* Double+TimestampToHour.swift in Sources */,
 				811310AC284A0986008D942F /* ToDo.swift in Sources */,
 				81242EC72849F26C00F9C266 /* AppDelegate.swift in Sources */,
+				81BA1355284E5B9A00C424E0 /* SegueType.swift in Sources */,
 				81242EC92849F26C00F9C266 /* SceneDelegate.swift in Sources */,
 				815539F8284B838A0054E67B /* AddEditToDoTableViewController.swift in Sources */,
 				81E4FC46284A029300142F48 /* HourTableViewCell.swift in Sources */,
