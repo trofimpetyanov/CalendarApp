@@ -81,26 +81,24 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "hourCell", for: indexPath) as! HourTableViewCell
         
-        // Filter toDos with selected date.
-        let dayToDos = model.toDos.filter { toDo in
-            let toDoDate = Date(timeIntervalSince1970: toDo.startDate)
-            
-            guard let calendarDate = calendar.selectedDate else { return false }
-            
-            return Calendar.current.isDate(toDoDate, inSameDayAs: calendarDate)
-        }
-        
-        // Update rows' titleLabel with day's toDos.
+        // Update row's titleLabel with toDos.
         cell.titleLabel.text = nil
         
-        for dayToDo in dayToDos {
-            if "\(indexPath.row):00" == dayToDo.startDate.timestampToHour() {
-                cell.toDo = dayToDo
+        for dayToDo in model.toDos {
+            
+            if let selectedDate = calendar.selectedDate {
+                var components = Calendar.current.dateComponents([.year, .month, .day, .hour], from: selectedDate)
                 
-                if let title = cell.titleLabel.text {
-                    cell.titleLabel.text = "\(title)\n\(dayToDo.name)"
-                } else {
-                    cell.titleLabel.text = dayToDo.name
+                components.hour = indexPath.row
+                
+                if let cellDate = Calendar.current.date(from: components), cellDate.timeIntervalSince1970 >= dayToDo.startDate && cellDate.timeIntervalSince1970 < dayToDo.finishDate {
+                    cell.toDo = dayToDo
+                    
+                    if let title = cell.titleLabel.text {
+                        cell.titleLabel.text = "\(title)\n\(dayToDo.name)"
+                    } else {
+                        cell.titleLabel.text = dayToDo.name
+                    }
                 }
             }
         }
