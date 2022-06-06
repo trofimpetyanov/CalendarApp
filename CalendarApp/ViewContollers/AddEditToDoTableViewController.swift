@@ -8,6 +8,7 @@
 import UIKit
 
 class AddEditToDoTableViewController: UITableViewController {
+    //MARK: – Outlets
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var descriptionTextField: UITextField!
     
@@ -16,6 +17,7 @@ class AddEditToDoTableViewController: UITableViewController {
     
     @IBOutlet var saveButton: UIBarButtonItem!
     
+    //MARK: – Properties
     private let placeholders = [
         "Оплатить аренду" : "Перевести 40,000₽ В.А.Комаровой",
         "Сходить в ветклинику" : "У Барсика болит лапа",
@@ -36,6 +38,30 @@ class AddEditToDoTableViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: – Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupDatePickers()
+        
+        if let toDo = toDo {
+            title = "Изменить задачу"
+            
+            nameTextField.text = toDo.name
+            descriptionTextField.text = toDo.description
+            
+            startDatePicker.date = Date(timeIntervalSince1970: toDo.startDate)
+            finishDatePicker.date = Date(timeIntervalSince1970: toDo.finishDate)
+        } else if let randomPlaceholder = placeholders.randomElement() {
+            title = "Новая задача"
+            
+            nameTextField.placeholder = randomPlaceholder.key
+            descriptionTextField.placeholder = randomPlaceholder.value
+        }
+        
+        updateSaveButtonState()
+    }
+    
+    //MARK: – Helpers
     func setupDatePickers() {
         let calendar = Calendar.current
         var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
@@ -60,28 +86,7 @@ class AddEditToDoTableViewController: UITableViewController {
         saveButton.isEnabled = !name.isEmpty
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupDatePickers()
-        
-        if let toDo = toDo {
-            title = "Изменить задачу"
-            
-            nameTextField.text = toDo.name
-            descriptionTextField.text = toDo.description
-            
-            startDatePicker.date = Date(timeIntervalSince1970: toDo.startDate)
-            finishDatePicker.date = Date(timeIntervalSince1970: toDo.finishDate)
-        } else if let randomPlaceholder = placeholders.randomElement() {
-            title = "Новая задача"
-            
-            nameTextField.placeholder = randomPlaceholder.key
-            descriptionTextField.placeholder = randomPlaceholder.value
-        }
-        
-        updateSaveButtonState()
-    }
-    
+    //MARK: – Actions
     @IBAction func textfieldsEditingChanged(_ sender: UITextField) {
         updateSaveButtonState()
     }
@@ -90,6 +95,7 @@ class AddEditToDoTableViewController: UITableViewController {
         updateDatePickers()
     }
     
+    //MARK: – Prepare
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "saveUnwind" else { return }
         

@@ -9,24 +9,30 @@ import UIKit
 import FSCalendar
 
 class CalendarViewController: UIViewController {
+    //MARK: – Outlets
     @IBOutlet var calendar: FSCalendar!
     @IBOutlet var tableView: UITableView!
     
+    //MARK: – View Model
     struct Model {
         var toDos: [ToDo] {
             Settings.shared.toDos
         }
     }
     
+    //MARK: – Properties
     var model = Model()
     
     var selectedToDo: ToDo?
     
+    //MARK: – Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         calendar.select(Date())
     }
+    
+    //MARK: – Actions
     @IBSegueAction func addEditToDoTableViewContollerSegue(_ coder: NSCoder, sender: Any?) -> AddEditToDoTableViewController? {
         guard let selectedIndexPath = tableView.indexPathForSelectedRow, let selectedCell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell, let selectedToDo = selectedCell.toDo else {
             return AddEditToDoTableViewController(coder: coder, toDo: nil)
@@ -43,11 +49,13 @@ class CalendarViewController: UIViewController {
             if let selectedIndexPath = tableView.indexPathForSelectedRow,
                let cell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell,
                let selectedToDo = cell.toDo {
+                // If toDo already exists, delete it and append an updated one.
                 tableView.deselectRow(at: selectedIndexPath, animated: true)
                 
                 Settings.shared.toDos.removeAll { $0.id == selectedToDo.id }
                 Settings.shared.toDos.append(toDo)
             } else {
+                // Else append new one.
                 Settings.shared.toDos.append(toDo)
             }
         } else if segue.identifier == "deleteUnwind" {
@@ -65,6 +73,7 @@ class CalendarViewController: UIViewController {
 }
 
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
+    //MARK: – Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         24
     }
@@ -72,6 +81,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "hourCell", for: indexPath) as! HourTableViewCell
         
+        // Filter toDos with selected date.
         let dayToDos = model.toDos.filter { toDo in
             let toDoDate = Date(timeIntervalSince1970: toDo.startDate)
             
@@ -80,6 +90,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
             return Calendar.current.isDate(toDoDate, inSameDayAs: calendarDate)
         }
         
+        // Update rows' titleLabel with day's toDos.
         cell.titleLabel.text = nil
         
         for dayToDo in dayToDos {
@@ -101,6 +112,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource {
+    //MARK: – Calendar Delegate
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         tableView.reloadSections(IndexSet(integer: .zero), with: .automatic)
         
