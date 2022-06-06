@@ -35,7 +35,6 @@ class CalendarViewController: UIViewController {
     @IBSegueAction func addEditToDoTableViewContollerSegue(_ coder: NSCoder, sender: Any?) -> AddEditToDoTableViewController? {
         
         if let selectedIndexPath = tableView.indexPathForSelectedRow, let selectedCell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell, let selectedDate = calendar.selectedDate {
-            tableView.deselectRow(at: selectedIndexPath, animated: true)
             
             if let selectedToDo = selectedCell.toDo {
                 return AddEditToDoTableViewController(coder: coder, toDo: selectedToDo, segueType: .toDoCellTapped)
@@ -69,10 +68,6 @@ class CalendarViewController: UIViewController {
     }
     
     @IBAction func unwindToCalendarViewController(segue: UIStoryboardSegue) {
-        if let selctedIndexPath = tableView.indexPathForSelectedRow {
-            tableView.deselectRow(at: selctedIndexPath, animated: true)
-        }
-        
         if segue.identifier == "saveUnwind",
            let sourceViewController = segue.source as? AddEditToDoTableViewController,
            let toDo = sourceViewController.toDo {
@@ -81,7 +76,6 @@ class CalendarViewController: UIViewController {
                let cell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell,
                let selectedToDo = cell.toDo {
                 // If toDo already exists, delete it and append an updated one.
-                tableView.deselectRow(at: selectedIndexPath, animated: true)
                 
                 Settings.shared.toDos.removeAll { $0.id == selectedToDo.id }
                 Settings.shared.toDos.append(toDo)
@@ -93,7 +87,6 @@ class CalendarViewController: UIViewController {
             if let selectedIndexPath = tableView.indexPathForSelectedRow,
                let cell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell,
                let selectedToDo = cell.toDo {
-                tableView.deselectRow(at: selectedIndexPath, animated: true)
                 
                 Settings.shared.toDos.removeAll { $0.id == selectedToDo.id }
             }

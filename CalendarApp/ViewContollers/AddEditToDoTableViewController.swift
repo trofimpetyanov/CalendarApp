@@ -69,7 +69,9 @@ class AddEditToDoTableViewController: UITableViewController {
             }
         case .emptyCellTapped(date: let date):
             if let date = date {
+                finishDatePicker.date = Calendar.current.date(byAdding: .hour, value: 1, to: date) ?? Date()
                 startDatePicker.date = date
+                updateDatePickers()
             }
         default:
             return
@@ -94,7 +96,7 @@ class AddEditToDoTableViewController: UITableViewController {
     }
     
     func updateDatePickers() {
-        finishDatePicker.minimumDate = Calendar.current.date(byAdding: .hour, value: 1, to: startDatePicker.date)
+        finishDatePicker.minimumDate = Calendar.current.date(byAdding: .minute, value: 5, to: startDatePicker.date)
     }
     
     func updateSaveButtonState() {
