@@ -266,7 +266,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="zPv-iu-kSg">
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="zPv-iu-kSg">
                                                             <rect key="frame" x="120.5" y="0.5" width="225.5" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="Zfd-VK-eyz"/>
@@ -305,7 +305,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="6G0-9m-0e4">
+                                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="6G0-9m-0e4">
                                                             <rect key="frame" x="120.5" y="0.5" width="225.5" height="44"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="pJ7-PF-KEz"/>

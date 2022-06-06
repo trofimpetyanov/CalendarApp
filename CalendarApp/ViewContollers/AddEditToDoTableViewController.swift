@@ -28,9 +28,11 @@ class AddEditToDoTableViewController: UITableViewController {
     ]
     
     var toDo: ToDo?
+    var segueType: SegueType?
     
-    init?(coder: NSCoder, toDo: ToDo?) {
+    init?(coder: NSCoder, toDo: ToDo?, segueType: SegueType) {
         self.toDo = toDo
+        self.segueType = segueType
         super.init(coder: coder)
     }
     
@@ -38,24 +40,41 @@ class AddEditToDoTableViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        toDo = nil
+    }
+    
     //MARK: – Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDatePickers()
         
-        if let toDo = toDo {
-            title = "Изменить задачу"
-            
-            nameTextField.text = toDo.name
-            descriptionTextField.text = toDo.description
-            
-            startDatePicker.date = Date(timeIntervalSince1970: toDo.startDate)
-            finishDatePicker.date = Date(timeIntervalSince1970: toDo.finishDate)
-        } else if let randomPlaceholder = placeholders.randomElement() {
+        if let randomPlaceholder = placeholders.randomElement() {
             title = "Новая задача"
             
             nameTextField.placeholder = randomPlaceholder.key
             descriptionTextField.placeholder = randomPlaceholder.value
+        }
+        
+        switch segueType {
+        case .toDoCellTapped:
+            if let toDo = toDo {
+                title = "Изменить задачу"
+                
+                nameTextField.text = toDo.name
+                descriptionTextField.text = toDo.description
+                
+                startDatePicker.date = Date(timeIntervalSince1970: toDo.startDate)
+                finishDatePicker.date = Date(timeIntervalSince1970: toDo.finishDate)
+            }
+        case .emptyCellTapped(date: let date):
+            if let date = date {
+                finishDatePicker.date = Calendar.current.date(byAdding: .hour, value: 1, to: date) ?? Date()
+                startDatePicker.date = date
+                updateDatePickers()
+            }
+        default:
+            return
         }
         
         updateSaveButtonState()
@@ -77,7 +96,7 @@ class AddEditToDoTableViewController: UITableViewController {
     }
     
     func updateDatePickers() {
-        finishDatePicker.minimumDate = Calendar.current.date(byAdding: .minute, value: 30, to: startDatePicker.date)
+        finishDatePicker.minimumDate = Calendar.current.date(byAdding: .minute, value: 5, to: startDatePicker.date)
     }
     
     func updateSaveButtonState() {
