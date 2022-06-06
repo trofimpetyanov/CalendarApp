@@ -48,23 +48,6 @@ class CalendarViewController: UIViewController {
         } else {
             return AddEditToDoTableViewController(coder: coder, toDo: nil, segueType: .newButtonTapped)
         }
-        
-        
-//        guard let selectedIndexPath = tableView.indexPathForSelectedRow, let selectedCell = tableView.cellForRow(at: selectedIndexPath) as? HourTableViewCell, let selectedDate = calendar.selectedDate else {
-//            return AddEditToDoTableViewController(coder: coder, toDo: nil, segueType: .newButtonTapped)
-//        }
-//        
-//        tableView.deselectRow(at: selectedIndexPath, animated: true)
-//        
-//        if let selectedToDo = selectedCell.toDo {
-//            return AddEditToDoTableViewController(coder: coder, toDo: selectedToDo, segueType: .toDoCellTapped)
-//        } else {
-//            var components = Calendar.current.dateComponents([.year, .month, .day, .hour], from: selectedDate)
-//            
-//            components.hour = selectedIndexPath.row
-//            
-//            return AddEditToDoTableViewController(coder: coder, toDo: nil, segueType: .emptyCellTapped(date: Calendar.current.date(from: components)))
-//        }
     }
     
     @IBAction func unwindToCalendarViewController(segue: UIStoryboardSegue) {
@@ -110,7 +93,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         cell.toDo = nil
         
         for dayToDo in model.toDos {
-            
             if let selectedDate = calendar.selectedDate {
                 var components = Calendar.current.dateComponents([.year, .month, .day, .hour], from: selectedDate)
                 
