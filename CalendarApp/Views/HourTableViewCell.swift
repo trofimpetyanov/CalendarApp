@@ -11,19 +11,15 @@ class HourTableViewCell: UITableViewCell {
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
     
+    var toDo: ToDo?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
-    // TODO: Configure cell with ToDo model
-    func configureCell() {
         
     }
 }
