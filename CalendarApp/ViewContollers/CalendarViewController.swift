@@ -84,6 +84,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         
         // Update row's titleLabel with toDos.
         cell.titleLabel.text = nil
+        cell.toDo = nil
         
         for dayToDo in model.toDos {
             

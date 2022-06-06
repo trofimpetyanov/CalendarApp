@@ -49,7 +49,7 @@
                                 </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Bb7-y8-zSk">
-                                <rect key="frame" x="0.0" y="450" width="414" height="412"/>
+                                <rect key="frame" x="0.0" y="442" width="414" height="420"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="hourCell" id="vS6-dR-rga" customClass="HourTableViewCell" customModule="CalendarApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="39.5"/>
@@ -106,7 +106,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1ky-2p-PDE">
-                                <rect key="frame" x="0.0" y="445" width="414" height="1"/>
+                                <rect key="frame" x="0.0" y="441" width="414" height="1"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="0aX-is-ktm"/>
@@ -124,11 +124,11 @@
                             <constraint firstItem="xpf-OE-bDE" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="UWN-2x-mYs"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hex-a1-c2L" secondAttribute="trailing" id="WKd-1N-k8R"/>
                             <constraint firstAttribute="trailing" secondItem="1ky-2p-PDE" secondAttribute="trailing" id="ZSz-ps-Chk"/>
-                            <constraint firstItem="1ky-2p-PDE" firstAttribute="top" secondItem="hex-a1-c2L" secondAttribute="bottom" constant="4" id="bdY-dS-VH8"/>
+                            <constraint firstItem="1ky-2p-PDE" firstAttribute="top" secondItem="hex-a1-c2L" secondAttribute="bottom" id="bdY-dS-VH8"/>
                             <constraint firstAttribute="trailing" secondItem="xpf-OE-bDE" secondAttribute="trailing" id="buq-sJ-4fo"/>
                             <constraint firstItem="1ky-2p-PDE" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="cqi-sp-bTO"/>
                             <constraint firstItem="xpf-OE-bDE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="dKf-IS-CDb"/>
-                            <constraint firstItem="Bb7-y8-zSk" firstAttribute="top" secondItem="1ky-2p-PDE" secondAttribute="bottom" constant="4" id="e6t-mE-9Am"/>
+                            <constraint firstItem="Bb7-y8-zSk" firstAttribute="top" secondItem="1ky-2p-PDE" secondAttribute="bottom" id="e6t-mE-9Am"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Календарь" id="enB-em-o7E">
