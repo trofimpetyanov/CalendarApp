@@ -30,6 +30,7 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
         
         calendar.select(Date())
+        calendar.locale = Locale(identifier: "ru_RU")
     }
     
     //MARK: – Actions
